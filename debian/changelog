@@ -1,0 +1,479 @@
+mutagen (1.45.1-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Michael Hudson-Doyle ]
+  * d/tests/control: Add python3-all to Depends: (Closes: #972526)
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Tue, 20 Oct 2020 09:43:23 +0200
+
+mutagen (1.45.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Thu, 20 Aug 2020 18:04:10 +0200
+
+mutagen (1.45.0-2) unstable; urgency=medium
+
+  * Add Breaks: beets (old autopkgtests fail with new mutagen).
+  * Fix privacy violations.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Wed, 12 Aug 2020 16:12:40 +0200
+
+mutagen (1.45.0-1) unstable; urgency=low
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 11 to 12.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Tristan Seligmann ]
+  * New upstream release.
+  * Declare rootless build.
+  * Bump debhelper-compat to 13.
+  * Bump Standards-Version to 4.5.0 (no changes).
+  * Override Lintian warnings about binaries.
+  * Add autopkgtests.
+  * Simplify rules.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Wed, 22 Jul 2020 18:42:13 +0200
+
+mutagen (1.44.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Sandro Tosi ]
+  * New upstream release; Closes: #952213
+    - drop python2 and PyPy support; Closes: #937094
+  * debian/copyright
+    - update copyright information
+  * debian/patches/use-system-inventory
+    - update patch to new upstream code
+  * debian/control
+    - add setuptools to b-d, needed by new code
+    - just b-d on python3-doc, needed for intersphinx objects; Closes: #951846
+  * debian/python-mutagen-doc.doc-base
+    - register doc-base against the python-mutagen-doc content
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 15 Mar 2020 18:34:54 -0400
+
+mutagen (1.40.0-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+
+  [ Mattia Rizzolo ]
+  * Switch to python3.7-doc.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 19 Dec 2018 02:48:06 +0100
+
+mutagen (1.40.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/control: Remove ancient X-Python-Version field
+
+  [ Tristan Seligmann ]
+  * New upstream release (closes: #900128).
+  * Switch to Python 3 for Sphinx.
+  * Override lintian warning about helper binaries.
+  * Bump Standards-Version to 4.1.4 (no changes).
+  * Drop Simon Chopin from Uploaders; thanks for the past work on mutagen!
+    (closes: #889764)
+  * Bump debhelper compat level to 11.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sun, 10 Jun 2018 18:17:44 +0200
+
+mutagen (1.38-1) unstable; urgency=medium
+
+  * Update watch file.
+  * New upstream release.
+  * Use Python 3.6 docs instead of 3.5 (closes: #871426).
+  * Run wrap-and-sort -t -s.
+  * Bump Standards-Version to 4.0.0 (no changes).
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Tue, 08 Aug 2017 03:53:42 +0200
+
+mutagen (1.36-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Mon, 26 Dec 2016 14:18:19 +0200
+
+mutagen (1.35.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Build-depend on python-pytest.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Fri, 16 Dec 2016 11:14:30 +0200
+
+mutagen (1.34.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fix debian/watch again.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Mon, 29 Aug 2016 01:04:22 +0200
+
+mutagen (1.34-1) unstable; urgency=medium
+
+  * Update Homepage: link (closes: #833332).
+  * Fix debian/watch.
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Wed, 03 Aug 2016 12:14:49 +0200
+
+mutagen (1.33.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fix docs patch for using system inventory, and disable network access.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sat, 16 Jul 2016 18:29:00 +0200
+
+mutagen (1.33.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Mon, 04 Jul 2016 00:20:27 +0200
+
+mutagen (1.32-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+  [ Tristan Seligmann ]
+  * New upstream release.
+  * Bump Standards-Version to 3.9.8 (no changes).
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sun, 22 May 2016 04:27:36 +0200
+
+mutagen (1.31-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Refresh patches/use-rtd-package.
+  * Fix Homepage url.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sat, 19 Sep 2015 02:05:12 +0200
+
+mutagen (1.30-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sat, 29 Aug 2015 07:40:43 +0200
+
+mutagen (1.29-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Fri, 31 Jul 2015 08:59:21 +0200
+
+mutagen (1.28-2) unstable; urgency=medium
+
+  * Reupload to unstable with minor changes.
+  * Use sphinx inventory from python-doc instead of the web.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Fri, 01 May 2015 01:38:04 +0200
+
+mutagen (1.28-1) experimental; urgency=low
+
+  * New upstream release.
+    - New release signing key.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sun, 15 Mar 2015 14:25:12 +0200
+
+mutagen (1.27-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Mon, 08 Dec 2014 01:45:10 +0200
+
+mutagen (1.25.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Make debian/copyright DEP-5 compliant.
+  * Update debian/copyright.
+  * Enable signature verification in debian/watch.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sun, 19 Oct 2014 15:23:22 +0200
+
+mutagen (1.25-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Build python3-mutagen package.
+  * Bump Standards-Version.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sat, 04 Oct 2014 00:40:46 +0200
+
+mutagen (1.24-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sun, 28 Sep 2014 00:49:44 +0200
+
+mutagen (1.23-2) unstable; urgency=medium
+
+  * Explicitly set LC_ALL=C.UTF-8 to avoid test suite failures if LC_ALL is
+    set to something else in the environment during a build (closes: #753141).
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sun, 27 Jul 2014 07:36:35 +0200
+
+mutagen (1.23-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #751155)
+  * Switch to pybuild.
+  * Bump Standards-Version.
+  * Build pypy-mutagen package for pypy.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Sat, 14 Jun 2014 14:01:23 +0200
+
+mutagen (1.22-1) unstable; urgency=low
+
+  [ Tristan Seligmann ]
+  * Update my email address.
+  * Update Homepage. (Closes: #673615)
+
+  [ Simon Chopin ]
+  * New upstream release.
+    + Document copyright on docs/id3_frames_gen.py to Christoph Reiter.
+    + Bump X-Python-Version to 2.6.
+    + Drop all patches as being applied upstream.
+    + Add a dependency on libc-bin and use the C.UTF-8 locale to run the
+      tests.
+  * Add myself to Uploaders.
+  * Regenerate the man pages during the build.
+  * Add a new package python-mutagen-doc with the Sphinx documentation.
+
+ -- Tristan Seligmann <mithrandi@debian.org>  Mon, 25 Nov 2013 01:06:19 +0200
+
+mutagen (1.21-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Simon Chopin ]
+  * New upstream version (Closes: #709810)
+    + Drop the patches integrated upstream:
+      -remove-hashbang.diff
+      -mpeg-length.diff
+      -mpeg-length-remove.diff
+    + Add a patch to fix an undefined name
+  * Bump Standard-Version to 3.9.4:
+    + Bump debhelper dependency to >= 9 to benefit from -arch/-indep targets
+    + Reorder dh arguments in d/rules
+  * Add Christoph Reiter to the copyright file.
+
+ -- Simon Chopin <chopin.simon@gmail.com>  Tue, 16 Jul 2013 23:24:27 +0200
+
+mutagen (1.20-1) unstable; urgency=low
+
+  * New upstream release (closes: #636710).
+  * Acknowledge NMUs (thanks to Jakub Wilk and Alessio Treglia).
+  * Bump Standards-Version (no changes needed).
+  * Run the test suite during build; thanks to Andrey Rahmatullin for the
+    patch. (closes: #616106)
+  * Add DPMT to Uploaders.
+  * Remove preinst script, since we no longer need to support upgrades from
+    lenny.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.net>  Sun, 11 Sep 2011 20:04:44 +0200
+
+mutagen (1.19-2.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix wrong file length calculation (Closes: #637061):
+    - debian/patches/mpeg-length.diff: Fix CBR length calculation, it used
+      the rounded frame_length including the current frame's padding.
+    - debian/patches/mpeg-length-remove.diff: Remove the code which should
+      have prevented the use of impossible lengths by performing the
+      'bitrate/file size' check. This was never used because the args are
+      switched, plus the calculation is wrong as the result is 1/64 of the
+      real length.
+
+ -- Alessio Treglia <alessio@debian.org>  Mon, 08 Aug 2011 10:15:32 +0200
+
+mutagen (1.19-2.1) unstable; urgency=low
+
+  * Non-maintainer upload (with maintainer's permission).
+  * Rebuild against python-defaults (>= 2.6.6-14)
+
+ -- Jakub Wilk <jwilk@debian.org>  Mon, 02 May 2011 21:48:11 +0200
+
+mutagen (1.19-2) unstable; urgency=low
+
+  * Switch from cdbs / pycentral to dh / pysupport.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.net>  Sun, 30 May 2010 09:20:53 +0200
+
+mutagen (1.19-1) UNRELEASED; urgency=low
+
+  [ Jakub Wilk ]
+  * Fix watch file.
+
+  [ Tristan Seligmann ]
+  * New upstream release.
+  * Switch to 3.0 (quilt) format.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.net>  Thu, 20 May 2010 20:18:03 +0200
+
+mutagen (1.15-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.net>  Mon, 16 Feb 2009 19:55:06 +0200
+
+mutagen (1.15-1) experimental; urgency=low
+
+  * New upstream release (closes: #510149).
+  * Add ${misc:Depends} to debian/control.
+  * Update VCS / Homepage URLs in debian/control.
+  * Bump Standards-Version to 3.8.0.
+  * Update watch file.
+  * Switch to quilt.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.net>  Thu, 29 Jan 2009 22:49:25 +0200
+
+mutagen (1.14-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update my e-mail address.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.net>  Mon, 02 Jun 2008 23:55:07 +0200
+
+mutagen (1.13-1) unstable; urgency=low
+
+  * New upstream release.
+    - FLAC: Raise IOError, instead of UnboundLocalError, when trying to open a
+      non-existant file (closes: #448734).
+    - TCP/TCMP support (closes: #452231).
+    - 2x-100x speedup writing files on filesystems that don't support mmap().
+  * Add Vcs-Darcs field.
+  * Move Homepage into source package field.
+  * Bump to debhelper v6.
+  * Bump Standards-Version.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Sat, 26 Jan 2008 20:56:45 +0200
+
+mutagen (1.11-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Medium urgency: fixes a major bug reading TDAT frames; month and day
+      were reversed.
+  * Remove lintian override as this should be fixed upstream shortly.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Fri, 27 Apr 2007 18:52:30 +0200
+
+mutagen (1.10.1-1) unstable; urgency=low
+
+  * New upstream version.
+    - Fix id3 syncsafe / flag handling that could cause data corruption in
+      some instances (closes: #403542).
+    - Allow skipping over ID3 tags incorrectly present in FLAC files, instead
+      of choking on them (closes: #411431)
+    - Fix reading of GStreamer-corrupted Ogg files (closes: #411432).
+    - Correct invalid APEv2 tag key and flags handling (closes: #411433).
+    - Supercedes previous NMUs, thanks guys! (closes: #412874).
+  * Add note to README.Debian about mutagen.m4a deprecation.
+  * Add lintian override to suppress bogus warning about python-central being
+    needed to run the clean target (it's not).
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Sun, 22 Apr 2007 23:57:03 +0200
+
+mutagen (1.8-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Mon,  9 Oct 2006 00:04:58 +0200
+
+mutagen (1.7.1-1) unstable; urgency=low
+
+  * New upstream version.
+  * Bump version on python-central build-dep.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Sun,  1 Oct 2006 03:14:57 +0200
+
+mutagen (1.6-1) unstable; urgency=low
+
+  * New upstream version.
+  * Install upstream changelog as changelog.gz (closes: #376575).
+    - Thanks to Bastian Kleineidam <calvin@debian.org> for the patch.
+  * Tweak watch file.
+  * Add Provides: pythonX.Y-mutagen.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Sat, 12 Aug 2006 16:13:06 +0200
+
+mutagen (1.5.1-1) unstable; urgency=low
+
+  * New upstream version.
+  * Add lintian overrides.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Tue, 27 Jun 2006 03:51:48 +0200
+
+mutagen (1.5-1) unstable; urgency=low
+
+  * New upstream version.
+  * Adopt package (closes: #374502).
+  * Convert to cdbs and python-central.
+  * Add watch file.
+
+ -- Tristan Seligmann <mithrandi@mithrandi.za.net>  Wed, 21 Jun 2006 21:25:57 +0200
+
+mutagen (1.4-2) unstable; urgency=low
+
+  * Update to new Python policy (XS-Python-Version >= 2.3).
+
+ -- Joe Wreschnig <piman@debian.org>  Tue, 13 Jun 2006 14:10:31 -0500
+
+mutagen (1.4-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/control: Remove pyvorbis Suggests/mention.
+  * debian/rules: Add no-op rules to shush lintian.
+
+ -- Joe Wreschnig <piman@debian.org>  Sat,  3 Jun 2006 20:15:00 -0500
+
+mutagen (1.3-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/rules: Let setup.py handle tools and man pages.
+
+ -- Joe Wreschnig <piman@debian.org>  Mon, 29 May 2006 22:06:48 -0500
+
+mutagen (1.2-2) unstable; urgency=low
+
+  * Use python-support.
+  * Standards-Version 3.7.2 (no updates required).
+
+ -- Joe Wreschnig <piman@debian.org>  Sat, 13 May 2006 02:12:22 -0500
+
+mutagen (1.2-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/control: Suggest python-pyvorbis.
+  * debian/docs: Add TUTORIAL.
+
+ -- Joe Wreschnig <piman@debian.org>  Sun, 23 Apr 2006 01:09:14 -0500
+
+mutagen (1.1-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Joe Wreschnig <piman@debian.org>  Tue,  4 Apr 2006 01:06:20 -0500
+
+mutagen (1.0-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Joe Wreschnig <piman@debian.org>  Mon, 13 Mar 2006 16:20:14 -0600
+
+mutagen (0.9-1) unstable; urgency=low
+
+  * Initial release. (Closes: #353505)
+
+ -- Joe Wreschnig <piman@debian.org>  Tue, 21 Feb 2006 03:06:14 -0600

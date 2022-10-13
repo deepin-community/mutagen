@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=mutagen
+
+# This is generally a good idea to avoid littering the filesystem with unneeded
+# pyc files, but it is also specifically needed to avoid byte-compilation of
+# the binaries in tools/ when the test suite is run.
+export PYTHONDONTWRITEBYTECODE=yes
+
+# Set UTF-8 locale as the tests expect this
+export LC_ALL=C.UTF-8
+
+export PYBUILD_TEST_ARGS=-m 'not quality'
+
+%:
+	dh $@ --buildsystem=pybuild
+
+execute_after_dh_auto_build:
+ifeq ($(filter nodoc,$(DEB_BUILD_PROFILES)),)
+	PYTHONPATH=. \
+	   http_proxy='127.0.0.1:9' \
+	   https_proxy='127.0.0.1:9' \
+	   python3 -m sphinx -N -b html docs/ $(CURDIR)/.pybuild/docs/html/
+	$(MAKE) -C docs/man
+endif
+
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
+
+
+execute_after_dh_clean:
+	rm -rf docs/man/_man

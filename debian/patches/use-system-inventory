@@ -1,0 +1,23 @@
+From: Tristan Seligmann <mithrandi@debian.org>
+Date: Thu, 8 Oct 2015 09:57:13 -0700
+Subject: Use the system copy of the Python documentation inventory
+
+Forwarded: no
+Patch-Name: use-system-inventory
+---
+ docs/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/conf.py b/docs/conf.py
+index be33500..a092a66 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -17,7 +17,7 @@ extensions = [
+     'sphinx.ext.extlinks',
+ ]
+ intersphinx_mapping = {
+-    'python': ('https://docs.python.org/3', None),
++    'python': ('https://docs.python.org/3', '/usr/share/doc/python3/html/objects.inv'),
+ }
+ source_suffix = '.rst'
+ master_doc = 'index'

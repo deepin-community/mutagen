@@ -1,0 +1,65 @@
+Source: mutagen
+Section: python
+Priority: optional
+Maintainer: Tristan Seligmann <mithrandi@debian.org>
+Uploaders:
+ Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>,
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-python3,
+ dh-sequence-sphinxdoc <!nodoc>,
+ faad <!nocheck>,
+ flac <!nocheck>,
+ libc-bin (>= 2.13),
+ oggz-tools <!nocheck>,
+ python3-all,
+ python3-doc <!nodoc>,
+ python3-docutils,
+ python3-hypothesis <!nocheck>,
+ python3-pycodestyle <!nocheck>,
+ python3-pyflakes <!nocheck>,
+ python3-pytest <!nocheck>,
+ python3-setuptools,
+ python3-sphinx (>= 1.0.7+dfsg) <!nodoc>,
+ python3-sphinx-rtd-theme <!nodoc>,
+ vorbis-tools <!nocheck>,
+Standards-Version: 4.5.0
+Vcs-Git: https://salsa.debian.org/python-team/packages/mutagen.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/mutagen
+Homepage: https://github.com/quodlibet/mutagen
+Rules-Requires-Root: no
+
+Package: python3-mutagen
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Suggests: python-mutagen-doc
+Breaks: beets (<< 1.4.9-6~), python-mutagen (<< 1.44.0-1)
+Replaces: python-mutagen (<< 1.44.0-1)
+Description: audio metadata editing library (Python 3)
+ Mutagen is a Python module to handle audio metadata. It supports FLAC,
+ M4A, MP3, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, and
+ WavPack audio files. All versions of ID3v2 are supported, and all
+ standard ID3v2.4 frames are parsed. It can read Xing headers to
+ accurately calculate the bitrate and length of MP3s. ID3 and APEv2
+ tags can be edited regardless of audio format. It can also manipulate
+ Ogg streams on an individual packet/page level.
+ .
+ This package is built for Python 3.
+
+Package: python-mutagen-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}
+Recommends: python3-mutagen
+Built-Using: ${sphinxdoc:Built-Using}
+Build-Profiles: <!nodoc>
+Description: audio metadata editing library - documentation
+ Mutagen is a Python module to handle audio metadata. It supports FLAC,
+ M4A, MP3, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, and
+ WavPack audio files. All versions of ID3v2 are supported, and all
+ standard ID3v2.4 frames are parsed. It can read Xing headers to
+ accurately calculate the bitrate and length of MP3s. ID3 and APEv2
+ tags can be edited regardless of audio format. It can also manipulate
+ Ogg streams on an individual packet/page level.
+ .
+ This package provides documentation for the mutagen package.

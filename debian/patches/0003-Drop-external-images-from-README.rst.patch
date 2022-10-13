@@ -1,0 +1,27 @@
+From: Tristan Seligmann <mithrandi@debian.org>
+Date: Wed, 12 Aug 2020 16:01:17 +0200
+Subject: Drop external images from README.rst
+
+---
+ README.rst | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 7084902..1cd6c6e 100644
+--- a/README.rst
++++ b/README.rst
+@@ -1,7 +1,3 @@
+-.. image:: https://raw.githubusercontent.com/quodlibet/mutagen/master/docs/images/logo.svg
+-   :align: center
+-   :width: 400px
+-
+ |
+ 
+ Mutagen is a Python module to handle audio metadata. It supports ASF, FLAC,
+@@ -17,6 +13,3 @@ macOS, and has no dependencies outside the Python standard library. Mutagen
+ is licensed under the GPL version 2 or later.
+ 
+ For more information visit https://mutagen.readthedocs.org
+-
+-.. image:: https://codecov.io/gh/quodlibet/mutagen/branch/master/graph/badge.svg
+-  :target: https://codecov.io/gh/quodlibet/mutagen

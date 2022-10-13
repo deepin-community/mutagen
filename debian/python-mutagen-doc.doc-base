@@ -1,0 +1,9 @@
+Document: mutagen
+Title: mutagen
+Author: Christoph Reitner
+Abstract: Python library to edit audio metadata.
+Section: Sound
+
+Format: HTML
+Index: /usr/share/doc/python-mutagen-doc/html/index.html
+Files: /usr/share/doc/python-mutagen-doc/html/*.html
