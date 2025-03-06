@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from tests import TestCase
 from mutagen._vorbis import VComment, VCommentDict, istag, error
@@ -199,7 +198,7 @@ class TVCommentDict(TestCase):
         self.assertEqual(list(self.c)[0], ("artist", "mu"))
 
     def test_del(self):
-        del(self.c["title"])
+        del self.c["title"]
         self.failUnlessRaises(KeyError, self.c.__getitem__, "title")
 
     def test_contains(self):
@@ -214,7 +213,7 @@ class TVCommentDict(TestCase):
         self.failUnlessEqual(self.c["title"], ["another fake"])
 
     def test_set_preserve_case(self):
-        del(self.c["title"])
+        del self.c["title"]
         self.c["TiTlE"] = "blah"
         self.failUnless(("TiTlE", "blah") in list(self.c))
         self.failUnless("title" in self.c)
@@ -223,7 +222,7 @@ class TVCommentDict(TestCase):
         self.failUnless("TITLE" in self.c)
 
     def test_del_case(self):
-        del(self.c["TITLE"])
+        del self.c["TITLE"]
         self.failUnlessRaises(KeyError, self.c.__getitem__, "title")
 
     def test_get_failure(self):

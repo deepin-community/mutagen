@@ -6,10 +6,10 @@ Subject: Drop external images from README.rst
  README.rst | 7 -------
  1 file changed, 7 deletions(-)
 
-diff --git a/README.rst b/README.rst
-index 7084902..1cd6c6e 100644
---- a/README.rst
-+++ b/README.rst
+Index: mutagen/README.rst
+===================================================================
+--- mutagen.orig/README.rst
++++ mutagen/README.rst
 @@ -1,7 +1,3 @@
 -.. image:: https://raw.githubusercontent.com/quodlibet/mutagen/master/docs/images/logo.svg
 -   :align: center
@@ -18,8 +18,8 @@ index 7084902..1cd6c6e 100644
  |
  
  Mutagen is a Python module to handle audio metadata. It supports ASF, FLAC,
-@@ -17,6 +13,3 @@ macOS, and has no dependencies outside the Python standard library. Mutagen
- is licensed under the GPL version 2 or later.
+@@ -18,6 +14,3 @@ under `the GPL version 2 or
+ later <https://spdx.org/licenses/GPL-2.0-or-later.html>`__.
  
  For more information visit https://mutagen.readthedocs.org
 -

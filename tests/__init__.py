@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import re
 import os
@@ -6,6 +5,7 @@ import sys
 import shutil
 import contextlib
 from io import StringIO
+from tempfile import mkstemp
 from unittest import TestCase as BaseTestCase
 
 try:
@@ -13,15 +13,14 @@ try:
 except ImportError:
     raise SystemExit("pytest missing: sudo apt-get install python-pytest")
 
-from mutagen._senf import text2fsn, fsn2text, path2fsn, mkstemp, fsnative
-
 
 DATA_DIR = os.path.join(
-    os.path.dirname(os.path.realpath(path2fsn(__file__))), "data")
-assert isinstance(DATA_DIR, fsnative)
+    os.path.dirname(os.path.realpath(__file__)), "data")
+assert isinstance(DATA_DIR, str)
 
 
-if fsn2text(text2fsn(u"öäü")) != u"öäü":
+_fs_enc = sys.getfilesystemencoding()
+if "öäü".encode(_fs_enc, "replace").decode(_fs_enc) != u"öäü":
     raise RuntimeError("This test suite needs a unicode locale encoding. "
                        "Try setting LANG=C.UTF-8")
 
@@ -106,11 +105,7 @@ class TestCase(BaseTestCase):
         self.assertTrue(b != a)
 
 
-def check():
-    return pytest.main(args=[os.path.join("tests", "quality")])
-
-
-def unit(run=[], exitfirst=False, no_quality=False):
+def unit(run=[], exitfirst=False):
     args = []
 
     if run:
@@ -119,9 +114,6 @@ def unit(run=[], exitfirst=False, no_quality=False):
 
     if exitfirst:
         args.append("-x")
-
-    if no_quality:
-        args.extend(["-m", "not quality"])
 
     args.append("tests")
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import os
 import subprocess
@@ -607,7 +606,7 @@ class TFLACBadBlockSizeWrite(TestCase):
 
     def test_write_reread(self):
         flac = FLAC(self.NEW)
-        del(flac["artist"])
+        del flac["artist"]
         flac.save()
         flac2 = FLAC(self.NEW)
         self.failUnlessEqual(flac["title"], flac2["title"])

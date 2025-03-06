@@ -1,3 +1,42 @@
+mutagen (1.47.0-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 1.47.0; Closes: #1042647
+
+ -- Bastian Germann <bage@debian.org>  Fri, 04 Oct 2024 12:37:01 +0200
+
+mutagen (1.46.0-2) unstable; urgency=medium
+
+  * Team upload
+  * Remove retired uploader
+
+ -- Bastian Germann <bage@debian.org>  Thu, 13 Jul 2023 15:11:48 +0200
+
+mutagen (1.46.0-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Louis-Philippe Véronneau ]
+  * d/watch: use git mode, since Release pages on Github can't be used with
+    uscan anymore.
+  * d/patches: refresh for new upstream.
+  * d/tests: make the unit tests more readable.
+  * d/control: Standards-Version update to 4.6.1. No changes.
+  * d/control: do not depend on libc-bin, as it's essential.
+
+ -- Louis-Philippe Véronneau <pollo@debian.org>  Sun, 30 Oct 2022 15:48:52 -0400
+
+mutagen (1.45.1-3) unstable; urgency=medium
+
+  [ Sandro Tosi ]
+  * Use the new Debian Python Team contact name and address
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + Build-Depends: Drop versioned constraint on libc-bin and python3-sphinx.
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 04 May 2022 00:38:54 -0400
+
 mutagen (1.45.1-2) unstable; urgency=medium
 
   [ Ondřej Nový ]

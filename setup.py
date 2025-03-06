@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 # Copyright 2005-2009,2011 Joe Wreschnig
 #
 # This program is free software; you can redistribute it and/or modify
@@ -13,9 +12,9 @@ import shutil
 import sys
 import subprocess
 import tarfile
+import warnings
 
 from setuptools import setup, Command, Distribution
-from distutils import dir_util
 
 
 def get_command_class(name):
@@ -95,8 +94,14 @@ class distcheck(sdist):
             assert process.returncode == 0
 
             tracked_files = out.splitlines()
-            for ignore in [".gitignore", ".codecov.yml",
-                           ".github/workflows/test.yml"]:
+            to_ignore = [
+                ".gitignore",
+                ".codecov.yml",
+                ".github/workflows/test.yml",
+                ".readthedocs.yaml",
+                "docs/requirements.txt",
+            ]
+            for ignore in to_ignore:
                 tracked_files.remove(ignore)
 
             tracked_files = [
@@ -112,7 +117,7 @@ class distcheck(sdist):
 
         distcheck_dir = os.path.join(self.dist_dir, "distcheck")
         if os.path.exists(distcheck_dir):
-            dir_util.remove_tree(distcheck_dir)
+            shutil.rmtree(distcheck_dir)
         self.mkpath(distcheck_dir)
 
         archive = self.get_archive_files()[0]
@@ -175,29 +180,15 @@ class test_cmd(Command):
             self.to_run = self.to_run.split(",")
         self.exitfirst = bool(self.exitfirst)
         self.no_quality = bool(self.no_quality)
+        if self.no_quality:
+            warnings.warn(
+                "--no-quality is deprecated and doesn't do anything anymore",
+                DeprecationWarning)
 
     def run(self):
         import tests
 
-        status = tests.unit(self.to_run, self.exitfirst, self.no_quality)
-        if status != 0:
-            raise SystemExit(status)
-
-
-class quality_cmd(Command):
-    description = "run flake8 tests"
-    user_options = []
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        import tests
-
-        status = tests.check()
+        status = tests.unit(self.to_run, self.exitfirst)
         if status != 0:
             raise SystemExit(status)
 
@@ -223,7 +214,7 @@ class coverage_cmd(Command):
 
         for key in list(sys.modules.keys()):
             if key.startswith('mutagen'):
-                del(sys.modules[key])
+                del sys.modules[key]
 
         cov = coverage()
         cov.start()
@@ -238,8 +229,7 @@ class coverage_cmd(Command):
         cov.html_report(
             directory=dest,
             ignore_errors=True,
-            include=["mutagen/*"],
-            omit=["mutagen/_senf/*"])
+            include=["mutagen/*"])
 
         print("Coverage summary: file://%s/index.html" % dest)
 
@@ -248,9 +238,12 @@ if __name__ == "__main__":
     if sys.version_info[0] < 3:
         raise Exception("Python 2 no longer supported")
 
+    # required for PEP 517
+    sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
+
     from mutagen import version
 
-    with open('README.rst') as h:
+    with open('README.rst', encoding='utf-8') as h:
         long_description = h.read()
 
     # convert to a setuptools compatible version string
@@ -262,7 +255,6 @@ if __name__ == "__main__":
     cmd_classes = {
         "clean": clean,
         "test": test_cmd,
-        "quality": quality_cmd,
         "coverage": coverage_cmd,
         "distcheck": distcheck,
         "build_sphinx": build_sphinx,
@@ -280,10 +272,6 @@ if __name__ == "__main__":
           classifiers=[
             'Operating System :: OS Independent',
             'Programming Language :: Python :: 3',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: Implementation :: CPython',
             'Programming Language :: Python :: Implementation :: PyPy',
             ('License :: OSI Approved :: '
@@ -296,14 +284,16 @@ if __name__ == "__main__":
             "mutagen.mp4",
             "mutagen.asf",
             "mutagen.mp3",
-            "mutagen._senf",
             "mutagen._tools",
           ],
+          package_data={
+            "mutagen": ["py.typed"],
+          },
           data_files=[
             ('share/man/man1', glob.glob("man/*.1")),
           ],
           python_requires=(
-            '>=3.5, <4'),
+            '>=3.7'),
           entry_points={
             'console_scripts': [
               'mid3cp=mutagen._tools.mid3cp:entry_point',
