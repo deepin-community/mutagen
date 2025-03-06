@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import os
 from io import BytesIO
@@ -61,6 +60,21 @@ class TID3Read(TestCase):
         audio = ID3(self.bad_tyer)
         self.failIf("TYER" in audio)
         self.failUnless("TIT2" in audio)
+
+    def test_handle_tyer_full_date(self):
+        id3 = ID3()
+        id3.version = (2, 3)
+        id3.add(TYER(encoding=0, text="2022-02-14"))
+        id3.update_to_v24()
+        self.failUnlessEqual(id3["TDRC"], "2022-02-14")
+
+    def test_handle_tyer_full_date_with_tdat(self):
+        id3 = ID3()
+        id3.version = (2, 3)
+        id3.add(TYER(encoding=0, text="2022-02-14"))
+        id3.add(TDAT(encoding=0, text="0504"))
+        id3.update_to_v24()
+        self.failUnlessEqual(id3["TDRC"], "2022-04-05")
 
     def test_tdrc(self):
         tags = ID3()
@@ -440,6 +454,11 @@ class TID3Header(TestCase):
         header = ID3Header(fileobj)
         self.assertEquals(header._extdata, b'\x00\x00\x56\x78\x9a\xbc')
 
+    def test_negative_header_size(self):
+        fileobj = BytesIO(
+            b'ID3\x04B@\x00\x00\x00\x00\x00\x00\x00\x00')
+        self.failUnlessRaises(ID3Error, ID3Header, fileobj)
+
     def test_23(self):
         id3 = ID3(self.silence)
         self.assertEqual(id3.version, (2, 3, 0))
@@ -604,7 +623,7 @@ class ID3v1Tags(TestCase):
         self.id3["TRCK"] = TRCK(encoding=0, text="32")
         tag = MakeID3v1(self.id3)
         self.failUnless(32, ParseID3v1(tag)["TRCK"])
-        del(self.id3["TRCK"])
+        del self.id3["TRCK"]
         tag = MakeID3v1(self.id3)
         tag = tag[:125] + b'  ' + tag[-1:]
         self.failIf("TRCK" in ParseID3v1(tag))

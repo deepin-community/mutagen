@@ -1,16 +1,13 @@
 Source: mutagen
 Section: python
 Priority: optional
-Maintainer: Tristan Seligmann <mithrandi@debian.org>
-Uploaders:
- Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>,
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
 Build-Depends:
  debhelper-compat (= 13),
  dh-sequence-python3,
  dh-sequence-sphinxdoc <!nodoc>,
  faad <!nocheck>,
  flac <!nocheck>,
- libc-bin (>= 2.13),
  oggz-tools <!nocheck>,
  python3-all,
  python3-doc <!nodoc>,
@@ -20,10 +17,10 @@ Build-Depends:
  python3-pyflakes <!nocheck>,
  python3-pytest <!nocheck>,
  python3-setuptools,
- python3-sphinx (>= 1.0.7+dfsg) <!nodoc>,
+ python3-sphinx <!nodoc>,
  python3-sphinx-rtd-theme <!nodoc>,
  vorbis-tools <!nocheck>,
-Standards-Version: 4.5.0
+Standards-Version: 4.6.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/mutagen.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/mutagen
 Homepage: https://github.com/quodlibet/mutagen

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -182,7 +181,7 @@ class TFileType(TestCase):
 
     def test_delitem(self):
         self.vorbis["foobar"] = "quux"
-        del(self.vorbis["foobar"])
+        del self.vorbis["foobar"]
         self.failIf("quux" in self.vorbis)
 
     def test_save_no_tags(self):
@@ -482,6 +481,7 @@ _FILETYPES = {
         os.path.join(DATA_DIR, "bad-xing.mp3"),
         os.path.join(DATA_DIR, "xing.mp3"),
         os.path.join(DATA_DIR, "silence-44-s.mp3"),
+        os.path.join(DATA_DIR, "no-tags.mp3"),
     ],
     Musepack: [
         os.path.join(DATA_DIR, "click.mpc"),
@@ -697,7 +697,7 @@ class TModuleImportAll(TestCase):
     def setUp(self):
         import mutagen
         files = os.listdir(mutagen.__path__[0])
-        modules = set(os.path.splitext(f)[0] for f in files)
+        modules = set(os.path.splitext(f)[0] for f in files if f not in ['py.typed'])
         modules = [f for f in modules if not f.startswith(("_", "."))]
 
         self.modules = []
